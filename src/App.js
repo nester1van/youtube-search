@@ -14,18 +14,17 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
+        
         <Router>
+          <Header/>
           <Switch>
             <Route exact path='/'><AuthorizationPage/></Route>
-            <ProtectedRoute>
-              <Header/>
-              <Route path='/searchpage'><SearchPage/></Route>
+            <ProtectedRoute path='/searchpage'>  
+              <SearchPage/>
             </ProtectedRoute>
-            <ProtectedRoute>
-              <Header/>
-              <Route path='/favorites'><FavoritesPage/></Route>
-            </ProtectedRoute>
-            
+            <ProtectedRoute path='/favorites'>
+              <FavoritesPage/>
+            </ProtectedRoute> 
           </Switch>
         </Router>
       </div>

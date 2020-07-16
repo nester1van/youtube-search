@@ -1,13 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import {Route, Redirect } from 'react-router-dom';
 
 
-const ProtectedRoute = ({ children, token }) => {
+const ProtectedRoute = ({ children, token, ...rest }) => {
   return (
-    <>
-    {token ? children : <Redirect to='/'/>}
-    </>
+    <Route
+      {...rest}
+      render={({ location }) =>
+        token ? (
+            children
+          ) : (
+            <Redirect
+              to={{
+                pathname: "/",
+                state: { from: location }
+              }}
+            />
+          )
+        }
+    />
   )
 };
 
