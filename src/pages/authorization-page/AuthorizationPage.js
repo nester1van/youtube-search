@@ -1,15 +1,40 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Form } from 'react-bootstrap'; 
 import BtnLogin from './BtnLogin';
 
-const AuthorizationPage = () => {
+import { setUserLogin, setUserPW } from '../../redux/user/actions';
+
+const AuthorizationPage = ({ login, password, setUserLogin, setUserPW }) => {
+  
+  const handleChangeLogin = (e) => {
+    const value = e.target.value;
+    setUserLogin(value);
+  }
+
+  const handleChangePW = (e) => {
+    const value = e.target.value;
+    setUserPW(value);
+  }
+  
   return (
     <Form>
-      <Form.Control type='text' placeholder='Логин'/>
-      <Form.Control type='password' placeholder='Password'/>
+      <Form.Control 
+        type='text' 
+        value={login} 
+        onChange={handleChangeLogin}/>
+      <Form.Control 
+        type='password' 
+        value={password} 
+        onChange={handleChangePW}/>
       <BtnLogin/>
     </Form>
   )
 };
 
-export default AuthorizationPage;
+const mapStateToProps = (store) => ({
+  login: store.user.login,
+  password: store.user.password
+});
+
+export default connect(mapStateToProps, { setUserLogin, setUserPW })(AuthorizationPage);
