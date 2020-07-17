@@ -1,8 +1,8 @@
 import { SET_USER_LOGIN, SET_USER_PW } from './actions';
 
 const initialUser = {
-  login: 'user1',
-  password: 'pw1'
+  login: '',
+  password: ''
 };
 
 const user = (state = initialUser, action) => {

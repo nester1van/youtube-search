@@ -18,6 +18,9 @@ const BtnLogin = ({ login, password,
     } else {
       const {tokenObj: {access_token, expires_at} } = res;
       setToken(access_token, expires_at);
+      const tokenJSON = JSON.stringify({token: access_token, expiry: expires_at});
+      localStorage.setItem('token', tokenJSON);
+      localStorage.setItem('userLogin', login);
     }
   }
 
