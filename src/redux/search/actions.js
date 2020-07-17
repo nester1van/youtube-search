@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { gapiClient } from '../../config';
 
 // action types
 export const SET_QUERY = 'SET_QUERY';
@@ -40,23 +41,31 @@ const getVideosErr = () => ({
   status: 'error'
 });
 
+const { apiKey: key } = gapiClient;
+
 // https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=surfing&token=%22ya29.a0AfH6SMBKQU08zqR_IA_y9a53EKYHg6HVpwFP3pgPHyqQ309jfv4VZOSNl2jBEsg-bRVjap-v2qfXRl4ZMwzxZ8QO1-LCZdBjXPT-2vngA4NcCxpeabezGoXVk9mI-hewWpi2rDcBVZeY2aVIDbeDM3xFz3jJcn_gAwzJ%22
 // URL creator
-const url = (query, maxResults, token) => {
-  return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&access_token=${token}`;
+const url = (query, maxResults, key) => {
+  // return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&access_token=${token}`;
+  return `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&q=${query}&key=${key}`;
 }
 
 // www.googleapis.com/youtube/v3/search?part=snippet&maxResults=3&q=react&access_token=ya29.a0AfH6SMA2d8U4x1H3cGNS5iQDM6ruVkCgvfW2Vky2rwWL7Je6LAybAcW5W88frWA05RfnXfJPqkECcbYY6cy14Y_8Fky31LemWbUmmE1wIr-bG54oYLT18lIo4beOs-jhZLijBKHLhRp0B_lvDyEe-jQb3XaWMVq6hHD2
 
-let token = 'ya29.a0AfH6SMA2d8U4x1H3cGNS5iQDM6ruVkCgvfW2Vky2rwWL7Je6LAybAcW5W88frWA05RfnXfJPqkECcbYY6cy14Y_8Fky31LemWbUmmE1wIr-bG54oYLT18lIo4beOs-jhZLijBKHLhRp0B_lvDyEe-jQb3XaWMVq6hHD2';
+const token = 'ya29.a0AfH6SMA2d8U4x1H3cGNS5iQDM6ruVkCgvfW2Vky2rwWL7Je6LAybAcW5W88frWA05RfnXfJPqkECcbYY6cy14Y_8Fky31LemWbUmmE1wIr-bG54oYLT18lIo4beOs-jhZLijBKHLhRp0B_lvDyEe-jQb3XaWMVq6hHD2';
+
+
 
 // async action creator
 const getVideos = () => (dispatch, getState) => {
   const { token, search } = getState();
   dispatch(getVideosReq());
-  return fetch(url(search.query, search.maxResults, token.token))
-    .then(res => res.json())
-    .then(json => console.log(json));
+  return axios.get(url(search.query, search.maxResults, key))
+    .then(json => {
+      dispatch(getVideosRes(json.data.items))
+    })
+    .catch(() => dispatch(getVideosErr()))
 }
 
 export default getVideos;
+
