@@ -10,6 +10,8 @@ const Header = ({token, setUserLogin, setUserPW, setToken}) => {
     setUserLogin('');
     setUserPW('');
     setToken('', 0);
+    localStorage.removeItem('token');
+    localStorage.removeItem('userLogin');
   };
 
   return (
