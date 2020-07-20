@@ -23,8 +23,8 @@ const ProtectedRoute = ({ children, token, ...rest }) => {
   )
 };
 
-const mapStateToProps = (store) => ({
-  token: store.token.token
+const mapStateToProps = (state) => ({
+  token: state.token.token
 });
 
 export default connect(mapStateToProps)(ProtectedRoute);

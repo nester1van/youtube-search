@@ -56,10 +56,10 @@ const BtnLogin = ({ login, password,
   );
 };
 
-const mapStateToProps = (store) => ({
-  login: store.user.login,
-  password: store.user.password,
-  token: store.token.token
+const mapStateToProps = (state) => ({
+  login: state.user.login,
+  password: state.user.password,
+  token: state.token.token
 });
 
 export default connect(mapStateToProps, { setUserLogin, setUserPW, setToken })(BtnLogin);

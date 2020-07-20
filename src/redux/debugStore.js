@@ -1,6 +1,7 @@
 // import { setUserLogin, setUserPW } from './user/actions';
 // import { setToken } from './token/actions';
 // import getVideos, { setQuery, setMaxResults, setQueryName } from './search/actions';
+// import { setLayoutVideos } from './appearance/actions';
 
 const debugStore = (store, isDebugging) => {
   if(isDebugging) {
@@ -12,6 +13,7 @@ const debugStore = (store, isDebugging) => {
     // store.dispatch(setMaxResults(3));
     // store.dispatch(setQueryName('react search'));
     // store.dispatch(getVideos());
+    // store.dispatch(setLayoutVideos('gallery'));
   }
 }
 

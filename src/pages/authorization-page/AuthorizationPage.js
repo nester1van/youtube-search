@@ -32,9 +32,9 @@ const AuthorizationPage = ({ login, password, setUserLogin, setUserPW }) => {
   )
 };
 
-const mapStateToProps = (store) => ({
-  login: store.user.login,
-  password: store.user.password
+const mapStateToProps = (state) => ({
+  login: state.user.login,
+  password: state.user.password
 });
 
 export default connect(mapStateToProps, { setUserLogin, setUserPW })(AuthorizationPage);

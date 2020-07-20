@@ -25,8 +25,8 @@ const Header = ({token, setUserLogin, setUserPW, setToken}) => {
   )
 };
 
-const mapStateToProps = (store) => ({
-  token: store.token.token
+const mapStateToProps = (state) => ({
+  token: state.token.token
 });
 
 export default connect(mapStateToProps, 
