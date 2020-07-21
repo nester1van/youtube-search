@@ -3,7 +3,7 @@
 // import getVideos, { setQuery, setMaxResults, setQueryName } from './search/actions';
 // import { setLayoutVideos } from './appearance/actions';
 // import { setQueryF, setMaxResultsF, 
-//   setQueryNameF, setSortByF } from './favorites/actions';
+//   setQueryNameF, setSortByF, addQueryToF } from './favorites/actions';
 
 const debugStore = (store, isDebugging) => {
   if(isDebugging) {
@@ -20,7 +20,11 @@ const debugStore = (store, isDebugging) => {
     // store.dispatch(setMaxResultsF(10));
     // store.dispatch(setQueryNameF('name'));
     // store.dispatch(setSortByF('date'));
-
+    // store.dispatch(addQueryToF({
+    // queryF: 'first',
+    // maxResultsF: 5,
+    // nameF: 'firstQuery',
+    // sortByF: 'date',}))
   }
 }
 

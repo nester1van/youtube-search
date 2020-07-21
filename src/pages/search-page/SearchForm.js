@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 import getVideos, { setQuery } from '../../redux/search/actions';
 import { setShowModalAdd } from '../../redux/appearance/actions';
 
-const SearchForm = ({ getVideos, query, setQuery, data, setShowModalAdd}) => {
+const SearchForm = ({ getVideos, setQuery, data, setShowModalAdd}) => {
 
   const { items } = data;
 
-  const handleSubmit = (e, v) => {
+  const handleSubmit = (e) => {
     const value = e.target.q.value;
     e.preventDefault();
     setQuery(value);
@@ -44,7 +44,6 @@ const SearchForm = ({ getVideos, query, setQuery, data, setShowModalAdd}) => {
 };
 
 const mapStateToProps = (state) => ({
-  query: state.search.query,
   data: state.search.data
 });
 

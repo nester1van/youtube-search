@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { setShowModalAdd } from '../../redux/appearance/actions';
 import { setQueryName, setSortBy, setMaxResults } from '../../redux/search/actions';
 import { setQueryF, setMaxResultsF, 
-  setQueryNameF, setSortByF } from '../../redux/favorites/actions';
+  setQueryNameF, setSortByF, addQueryToF } from '../../redux/favorites/actions';
 
 const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
-    query, setQueryName, name, sortBy, setSortBy, maxResults, setMaxResults,
+    query, name, sortBy, maxResults,
     queryF, setQueryF, maxResultsF, setMaxResultsF, 
-    nameF, setQueryNameF, sortByF, setSortByF }) => {
+    nameF, setQueryNameF, sortByF, setSortByF, addQueryToF }) => {
 
   useEffect(() => {
     setQueryF(query);
@@ -37,6 +37,14 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
     if (value < 0) value = 0;
     if (value > 50) value = 50;
     setMaxResultsF(value);
+  }
+
+  const handleAddF = () => {
+    addQueryToF({queryF,
+    maxResultsF,
+    nameF,
+    sortByF});
+    setShowModalAdd(false);
   }
 
   return (
@@ -91,7 +99,7 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={handleHide}>Не сохранять</Button>
-        <Button>Сохранить</Button>
+        <Button onClick={handleAddF}>Сохранить</Button>
       </Modal.Footer>
     </Modal>
   )
@@ -109,5 +117,6 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, 
-  { setShowModalAdd, setQueryF, setQueryNameF, setMaxResultsF, setSortByF })
+  { setShowModalAdd, setQueryF, setQueryNameF, 
+    setMaxResultsF, setSortByF, addQueryToF })
   (ModalAddToFavorites);
