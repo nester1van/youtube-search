@@ -8,14 +8,11 @@ const SearchForm = ({ getVideos, query, setQuery, data, setShowModalAdd}) => {
 
   const { items } = data;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, v) => {
+    const value = e.target.q.value;
     e.preventDefault();
-    getVideos();
-  };
-
-  const handleChangeQuery = (e) => {
-    const value = e.target.value;
     setQuery(value);
+    getVideos(value);
   };
 
   const handleShow = () => {
@@ -27,10 +24,9 @@ const SearchForm = ({ getVideos, query, setQuery, data, setShowModalAdd}) => {
       <InputGroup>
         <Form.Control 
           type='text' 
-          value={query} 
+          name='q' 
           placeholder='Что хотите посмотреть?'
-          aria-describedby='favorites'
-          onChange={handleChangeQuery}/>
+          aria-describedby='favorites'/>
         {(items && items.length !== 0) ?
         <InputGroup.Append>
           <InputGroup.Text 

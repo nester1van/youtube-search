@@ -64,12 +64,11 @@ const token = 'ya29.a0AfH6SMA2d8U4x1H3cGNS5iQDM6ruVkCgvfW2Vky2rwWL7Je6LAybAcW5W8
 
 
 // async action creator
-const getVideos = () => (dispatch, getState) => {
+const getVideos = (query) => (dispatch, getState) => {
   const { token, search } = getState();
   dispatch(getVideosReq());
-  return axios.get(url(search.query, search.maxResults, search.sortBy, key))
+  return axios.get(url(query, search.maxResults, search.sortBy, key))
     .then(json => {
-      console.log(json);
       dispatch(getVideosRes(json.data))
     })
     .catch(() => dispatch(getVideosErr()))

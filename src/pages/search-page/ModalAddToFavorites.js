@@ -12,7 +12,6 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
     nameF, setQueryNameF, sortByF, setSortByF }) => {
 
   useEffect(() => {
-    console.log(query);
     setQueryF(query);
     setMaxResultsF(maxResults);
     setQueryNameF(name);
