@@ -3,7 +3,7 @@ import { SET_QUERY, SET_MAX_RESULTS, SET_QUERY_NAME, SET_SORT_BY ,
 
 const initialSearch = {
   query: '',
-  maxResults: 25,
+  maxResults: 12,
   name: '',
   sortBy: 'viewCount',
   isFetching: false,

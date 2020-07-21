@@ -1,25 +1,30 @@
 import React, { useEffect } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { setShowModalAdd } from '../../redux/appearance/actions';
+import { setShowModalAdd, setShowModalEdit } from '../../redux/appearance/actions';
 import { setQueryName, setSortBy, setMaxResults } from '../../redux/search/actions';
 import { setQueryF, setMaxResultsF, 
   setQueryNameF, setSortByF, addQueryToF } from '../../redux/favorites/actions';
 
-const ModalAddToFavorites = ({ isShownEdit, setShowModalAdd,
-    query, name, sortBy, maxResults,
+const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
     queryF, setQueryF, maxResultsF, setMaxResultsF, 
-    nameF, setQueryNameF, sortByF, setSortByF, addQueryToF }) => {
+    nameF, setQueryNameF, sortByF, setSortByF }) => {
 
-  useEffect(() => {
-    setQueryF(query);
-    setMaxResultsF(maxResults);
-    setQueryNameF(name);
-    setSortByF(sortBy);
-  }, [isShownEdit]);
+    let oldQueryF, oldMaxResultsF, oldNameF, oldSortByF;
+    useEffect(() =>{
+      oldQueryF = queryF;
+      oldMaxResultsF = maxResultsF;
+      oldNameF = nameF;
+      oldSortByF = sortByF;
+    }, [isShownEdit]);
 
   const handleHide = () => {
-    setShowModalAdd(false);
+    setShowModalEdit(false);
+  }
+
+  const handleChangeQuery = (e) => {
+    const value = e.target.value;
+    setQueryF(value);
   }
 
   const handleChangeName = (e) => {
@@ -39,12 +44,17 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalAdd,
     setMaxResultsF(value);
   }
 
-  const handleAddF = () => {
+  const handleEditF = () => {
+
+    // EditF (oldData, data)       !!!
+
+    /*
     addQueryToF({queryF,
     maxResultsF,
     nameF,
     sortByF});
-    setShowModalAdd(false);
+    */
+   setShowModalEdit(false);
   }
 
   return (
@@ -57,8 +67,8 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalAdd,
           <Form.Group>
             <Form.Label>Запрос</Form.Label>
             <Form.Control
-              disabled
-              value={queryF}/>
+              value={queryF}
+              onChange={handleChangeQuery}/>
           </Form.Group>
           <Form.Group>
             <Form.Label>Название</Form.Label>
@@ -99,7 +109,7 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalAdd,
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={handleHide}>Не изменять</Button>
-        <Button onClick={handleAddF}>Изменить</Button>
+        <Button onClick={handleEditF}>Изменить</Button>
       </Modal.Footer>
     </Modal>
   )
@@ -117,6 +127,6 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, 
-  { setShowModalAdd, setQueryF, setQueryNameF, 
+  { setShowModalAdd, setShowModalEdit, setQueryF, setQueryNameF, 
     setMaxResultsF, setSortByF, addQueryToF })
   (ModalAddToFavorites);
