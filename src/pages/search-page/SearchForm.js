@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import getVideos, { setQuery } from '../../redux/search/actions';
 import { setShowModalAdd } from '../../redux/appearance/actions';
 
-const SearchForm = ({ getVideos, setQuery, data, setShowModalAdd}) => {
+const SearchForm = ({ getVideos, setQuery, data, maxResults, sortBy, setShowModalAdd}) => {
 
   const { items } = data;
 
@@ -12,7 +12,7 @@ const SearchForm = ({ getVideos, setQuery, data, setShowModalAdd}) => {
     const value = e.target.q.value;
     e.preventDefault();
     setQuery(value);
-    getVideos(value);
+    getVideos(value, maxResults, sortBy);
   };
 
   const handleShow = () => {
@@ -44,7 +44,9 @@ const SearchForm = ({ getVideos, setQuery, data, setShowModalAdd}) => {
 };
 
 const mapStateToProps = (state) => ({
-  data: state.search.data
+  data: state.search.data,
+  maxResults: state.search.maxResults,
+  sortBy: state.search.sortBy
 });
 
 export default connect(mapStateToProps, 

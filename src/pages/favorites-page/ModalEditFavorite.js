@@ -6,7 +6,7 @@ import { setQueryName, setSortBy, setMaxResults } from '../../redux/search/actio
 import { setQueryF, setMaxResultsF, 
   setQueryNameF, setSortByF, addQueryToF } from '../../redux/favorites/actions';
 
-const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
+const ModalAddToFavorites = ({ isShownEdit, setShowModalAdd,
     query, name, sortBy, maxResults,
     queryF, setQueryF, maxResultsF, setMaxResultsF, 
     nameF, setQueryNameF, sortByF, setSortByF, addQueryToF }) => {
@@ -16,7 +16,7 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
     setMaxResultsF(maxResults);
     setQueryNameF(name);
     setSortByF(sortBy);
-  }, [isShownAdd]);
+  }, [isShownEdit]);
 
   const handleHide = () => {
     setShowModalAdd(false);
@@ -40,7 +40,6 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
   }
 
   const handleAddF = () => {
-    const id = 
     addQueryToF({queryF,
     maxResultsF,
     nameF,
@@ -49,7 +48,7 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
   }
 
   return (
-    <Modal show={isShownAdd} onHide={handleHide}>
+    <Modal show={isShownEdit} onHide={handleHide}>
       <Modal.Header>
         <Modal.Title>Сохранить запрос</Modal.Title>
       </Modal.Header>
@@ -99,8 +98,8 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={handleHide}>Не сохранять</Button>
-        <Button onClick={handleAddF}>Сохранить</Button>
+        <Button onClick={handleHide}>Не изменять</Button>
+        <Button onClick={handleAddF}>Изменить</Button>
       </Modal.Footer>
     </Modal>
   )
@@ -108,11 +107,11 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
 
 const mapStateToProps = (state) => {
   const { search: { query, name, maxResults, sortBy },
-    appearance: { isShownAdd },
+    appearance: { isShownEdit },
     favorites: { queryF, nameF, maxResultsF, sortByF }
   } = state;
   return ({
-    isShownAdd, query, name, maxResults, sortBy,
+    isShownEdit, query, name, maxResults, sortBy,
     queryF, nameF, maxResultsF, sortByF
   })
 };

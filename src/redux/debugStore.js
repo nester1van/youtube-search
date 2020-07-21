@@ -14,7 +14,7 @@ const debugStore = (store, isDebugging) => {
     // store.dispatch(setQuery('react'));
     // store.dispatch(setMaxResults(3));
     // store.dispatch(setQueryName('react search'));
-    //store.dispatch(getVideos('react'));
+    // store.dispatch(getVideos('react', 3, 'date'));
     // store.dispatch(setLayoutVideos('gallery'));
     // store.dispatch(setQueryF('t'));
     // store.dispatch(setMaxResultsF(10));
