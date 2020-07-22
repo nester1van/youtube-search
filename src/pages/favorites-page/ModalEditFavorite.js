@@ -2,21 +2,12 @@ import React, { useEffect } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { setShowModalAdd, setShowModalEdit } from '../../redux/appearance/actions';
-import { setQueryName, setSortBy, setMaxResults } from '../../redux/search/actions';
 import { setQueryF, setMaxResultsF, 
-  setQueryNameF, setSortByF, addQueryToF } from '../../redux/favorites/actions';
+  setQueryNameF, setSortByF, editQueryInF } from '../../redux/favorites/actions';
 
 const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
     queryF, setQueryF, maxResultsF, setMaxResultsF, 
-    nameF, setQueryNameF, sortByF, setSortByF }) => {
-
-    let oldQueryF, oldMaxResultsF, oldNameF, oldSortByF;
-    useEffect(() =>{
-      oldQueryF = queryF;
-      oldMaxResultsF = maxResultsF;
-      oldNameF = nameF;
-      oldSortByF = sortByF;
-    }, [isShownEdit]);
+    nameF, setQueryNameF, sortByF, setSortByF, selectedId, editQueryInF }) => {
 
   const handleHide = () => {
     setShowModalEdit(false);
@@ -45,16 +36,14 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
   }
 
   const handleEditF = () => {
+    editQueryInF(selectedId, {
+      queryF,
+      maxResultsF,
+      nameF,
+      sortByF
+    });
 
-    // EditF (oldData, data)       !!!
-
-    /*
-    addQueryToF({queryF,
-    maxResultsF,
-    nameF,
-    sortByF});
-    */
-   setShowModalEdit(false);
+    setShowModalEdit(false);
   }
 
   return (
@@ -118,15 +107,15 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
 const mapStateToProps = (state) => {
   const { search: { query, name, maxResults, sortBy },
     appearance: { isShownEdit },
-    favorites: { queryF, nameF, maxResultsF, sortByF }
+    favorites: { queryF, nameF, maxResultsF, sortByF, selectedId }
   } = state;
   return ({
     isShownEdit, query, name, maxResults, sortBy,
-    queryF, nameF, maxResultsF, sortByF
+    queryF, nameF, maxResultsF, sortByF, selectedId
   })
 };
 
 export default connect(mapStateToProps, 
   { setShowModalAdd, setShowModalEdit, setQueryF, setQueryNameF, 
-    setMaxResultsF, setSortByF, addQueryToF })
+    setMaxResultsF, setSortByF, editQueryInF})
   (ModalAddToFavorites);

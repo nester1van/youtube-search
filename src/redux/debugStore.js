@@ -3,7 +3,8 @@
 // import getVideos, { setQuery, setMaxResults, setQueryName } from './search/actions';
 // import { setLayoutVideos } from './appearance/actions';
 // import { setQueryF, setMaxResultsF, 
-//   setQueryNameF, setSortByF, addQueryToF } from './favorites/actions';
+//   setQueryNameF, setSortByF, setSelectedIdF,
+//   addQueryToF, editQueryInF, deleteQueryInF } from './favorites/actions';
 
 const debugStore = (store, isDebugging) => {
   if(isDebugging) {
@@ -20,11 +21,34 @@ const debugStore = (store, isDebugging) => {
     // store.dispatch(setMaxResultsF(10));
     // store.dispatch(setQueryNameF('name'));
     // store.dispatch(setSortByF('date'));
+    // store.dispatch(setSelectedIdF(1));
     // store.dispatch(addQueryToF({
     // queryF: 'first',
     // maxResultsF: 5,
     // nameF: 'firstQuery',
-    // sortByF: 'date',}))
+    // sortByF: 'date'}))
+
+    // correct index
+
+    // store.dispatch(editQueryInF(13, {queryF: 'second',
+    // maxResultsF: 6,
+    // nameF: 'secondQuery',
+    // sortByF: 'name'}));
+
+    //incorrect index
+
+    // store.dispatch(editQueryInF(11, {queryF: 'second',
+    // maxResultsF: 6,
+    // nameF: 'secondQuery',
+    // sortByF: 'name'}));
+
+    // correct index
+
+    // store.dispatch(deleteQueryInF(13));
+
+    // incorrect index
+
+    // store.dispatch(deleteQueryInF(11));
   }
 }
 

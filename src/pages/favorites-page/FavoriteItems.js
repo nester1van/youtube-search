@@ -7,14 +7,15 @@ const FavoriteItems = ({ dataF }) => {
   return (
     <>
       {dataF.map(queryData => {
-        const { queryF, nameF, maxResultsF, sortByF } = queryData;
-        const key = queryF + nameF + maxResultsF;
+        const { data: {queryF, nameF, maxResultsF, sortByF}, id } = queryData;
+
         return <FavoriteItem 
-          key={key} 
+          key={id} 
           queryF={queryF}
           nameF={nameF}
           maxResultsF={maxResultsF}
-          sortByF={sortByF}/>
+          sortByF={sortByF}
+          id={id}/>
       })}
       
     </>

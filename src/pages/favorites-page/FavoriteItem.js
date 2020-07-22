@@ -5,11 +5,13 @@ import getVideos, { setQuery, setQueryName,
   setMaxResults, setSortBy } from '../../redux/search/actions';
 import { setShowModalEdit } from '../../redux/appearance/actions';
 import { setQueryF, setQueryNameF, 
-  setMaxResultsF, setSortByF } from '../../redux/favorites/actions';
+  setMaxResultsF, setSortByF, setSelectedIdF,
+  deleteQueryInF } from '../../redux/favorites/actions';
 
 const FavoriteItem = ({ queryF, nameF, maxResultsF, sortByF,
   setQuery, setQueryName, setMaxResults, setSortBy, getVideos,
-  setShowModalEdit, setQueryF, setQueryNameF, setMaxResultsF, setSortByF }) => {
+  setShowModalEdit, setQueryF, setQueryNameF, setMaxResultsF, setSortByF, 
+  setSelectedIdF, id, deleteQueryInF }) => {
 
   const handleExecute = () => {
     setQuery(queryF);
@@ -20,20 +22,24 @@ const FavoriteItem = ({ queryF, nameF, maxResultsF, sortByF,
   };
 
   const handleEdit = () => {
-    console.log(queryF);
     setQueryF(queryF);
     setQueryNameF(nameF);
     setMaxResultsF(maxResultsF);
     setSortByF(sortByF);
+    setSelectedIdF(id);
     setShowModalEdit(true);
   }
   
+  const handleDelete = () => {
+    deleteQueryInF(id);
+  }
+
   return (
     <div>
       {nameF}
       <Button onClick={handleExecute}>Выполнить</Button>
       <Button onClick={handleEdit}>Изменить</Button>
-      <Button>Удалить</Button>
+      <Button onClick={handleDelete}>Удалить</Button>
     </div>
   )
 };
@@ -44,4 +50,5 @@ const FavoriteItem = ({ queryF, nameF, maxResultsF, sortByF,
 
 export default connect(null, 
   { setQuery, setQueryName, setMaxResults, setSortBy, getVideos, 
-    setShowModalEdit, setQueryF, setQueryNameF, setMaxResultsF, setSortByF })(FavoriteItem);
+    setShowModalEdit, setQueryF, setQueryNameF, setMaxResultsF, setSortByF,
+    setSelectedIdF, deleteQueryInF })(FavoriteItem);
