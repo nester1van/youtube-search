@@ -35,16 +35,21 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
     setMaxResultsF(value);
   }
 
-  const handleEditF = () => {
-    editQueryInF(selectedId, {
-      queryF,
-      maxResultsF,
-      nameF,
-      sortByF
-    });
-
-    setShowModalEdit(false);
+  const handleEditF = (e) => {
+    
+    if (nameF) {
+      editQueryInF(selectedId, {
+        queryF,
+        maxResultsF,
+        nameF,
+        sortByF
+      });
+      e.preventDefault();
+      setShowModalEdit(false);
+    }
   }
+
+  
 
   return (
     <Modal show={isShownEdit} onHide={handleHide}>
@@ -52,7 +57,7 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
         <Modal.Title>Сохранить запрос</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form>
+        <Form >
           <Form.Group>
             <Form.Label>Запрос</Form.Label>
             <Form.Control
@@ -94,12 +99,10 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
               value={maxResultsF}
               onChange={handleChangeMaxResults}/>
           </Form.Group>
+          <Button onClick={handleHide}>Не изменять</Button>
+          <Button type='submit' onClick={handleEditF}>Изменить</Button>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={handleHide}>Не изменять</Button>
-        <Button onClick={handleEditF}>Изменить</Button>
-      </Modal.Footer>
     </Modal>
   )
 };
