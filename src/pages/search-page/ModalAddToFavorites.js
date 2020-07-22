@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { setShowModalAdd } from '../../redux/appearance/actions';
+import { setShowModalAdd, setHeartFavorites } from '../../redux/appearance/actions';
 import { setQueryName, setSortBy, setMaxResults } from '../../redux/search/actions';
 import { setQueryF, setMaxResultsF, 
   setQueryNameF, setSortByF, addQueryToF } from '../../redux/favorites/actions';
@@ -9,7 +9,9 @@ import { setQueryF, setMaxResultsF,
 const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
     query, name, sortBy, maxResults,
     queryF, setQueryF, maxResultsF, setMaxResultsF, 
-    nameF, setQueryNameF, sortByF, setSortByF, addQueryToF }) => {
+    nameF, setQueryNameF, sortByF, setSortByF, addQueryToF, setHeartFavorites }) => {
+
+  const [validated, setValidated] = useState(false);
 
   useEffect(() => {
     setQueryF(query);
@@ -40,12 +42,14 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
   }
 
   const handleAddF = () => {
-    const id = 
-    addQueryToF({queryF,
-    maxResultsF,
-    nameF,
-    sortByF});
-    setShowModalAdd(false);
+    if (nameF) {
+      addQueryToF({queryF,
+        maxResultsF,
+        nameF,
+        sortByF});
+        setShowModalAdd(false);
+        setHeartFavorites('marked');    
+    }
   }
 
   return (
@@ -96,12 +100,10 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
               value={maxResultsF}
               onChange={handleChangeMaxResults}/>
           </Form.Group>
+          <Button onClick={handleHide}>Не сохранять</Button>
+          <Button type='submit' onClick={handleAddF}>Сохранить</Button>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button onClick={handleHide}>Не сохранять</Button>
-        <Button onClick={handleAddF}>Сохранить</Button>
-      </Modal.Footer>
     </Modal>
   )
 };
@@ -119,5 +121,5 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps, 
   { setShowModalAdd, setQueryF, setQueryNameF, 
-    setMaxResultsF, setSortByF, addQueryToF })
+    setMaxResultsF, setSortByF, addQueryToF, setHeartFavorites })
   (ModalAddToFavorites);

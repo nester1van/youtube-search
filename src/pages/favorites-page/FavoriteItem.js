@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import getVideos, { setQuery, setQueryName, 
   setMaxResults, setSortBy } from '../../redux/search/actions';
-import { setShowModalEdit } from '../../redux/appearance/actions';
+import { setShowModalEdit, setHeartFavorites } from '../../redux/appearance/actions';
 import { setQueryF, setQueryNameF, 
   setMaxResultsF, setSortByF, setSelectedIdF,
   deleteQueryInF } from '../../redux/favorites/actions';
@@ -11,7 +11,7 @@ import { setQueryF, setQueryNameF,
 const FavoriteItem = ({ queryF, nameF, maxResultsF, sortByF,
   setQuery, setQueryName, setMaxResults, setSortBy, getVideos,
   setShowModalEdit, setQueryF, setQueryNameF, setMaxResultsF, setSortByF, 
-  setSelectedIdF, id, deleteQueryInF }) => {
+  setSelectedIdF, id, deleteQueryInF, setHeartFavorites }) => {
 
   const handleExecute = () => {
     setQuery(queryF);
@@ -19,6 +19,7 @@ const FavoriteItem = ({ queryF, nameF, maxResultsF, sortByF,
     setMaxResults(maxResultsF);
     setSortBy(sortByF);
     getVideos(queryF, maxResultsF, sortByF);
+    setHeartFavorites('marked');
   };
 
   const handleEdit = () => {
@@ -51,4 +52,4 @@ const FavoriteItem = ({ queryF, nameF, maxResultsF, sortByF,
 export default connect(null, 
   { setQuery, setQueryName, setMaxResults, setSortBy, getVideos, 
     setShowModalEdit, setQueryF, setQueryNameF, setMaxResultsF, setSortByF,
-    setSelectedIdF, deleteQueryInF })(FavoriteItem);
+    setSelectedIdF, deleteQueryInF, setHeartFavorites })(FavoriteItem);
