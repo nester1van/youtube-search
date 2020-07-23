@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { setShowModalAdd, setHeartFavorites } from '../../redux/appearance/actions';
@@ -10,8 +10,6 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
     query, name, sortBy, maxResults,
     queryF, setQueryF, maxResultsF, setMaxResultsF, 
     nameF, setQueryNameF, sortByF, setSortByF, addQueryToF, setHeartFavorites }) => {
-
-  const [validated, setValidated] = useState(false);
 
   useEffect(() => {
     setQueryF(query);
@@ -41,12 +39,13 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
     setMaxResultsF(value);
   }
 
-  const handleAddF = () => {
+  const handleAddF = (e) => {
     if (nameF) {
       addQueryToF({queryF,
         maxResultsF,
         nameF,
         sortByF});
+        e.preventDefault();
         setShowModalAdd(false);
         setHeartFavorites('marked');    
     }

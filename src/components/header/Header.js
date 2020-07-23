@@ -4,6 +4,8 @@ import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import {setUserLogin, setUserPW} from '../../redux/user/actions';
 import {setToken} from '../../redux/token/actions';
+import logo from '../../img/sibdev-logo.png';
+import './header.css';
 
 const Header = ({token, setUserLogin, setUserPW, setToken}) => {
   const handelClick = () => {
@@ -16,11 +18,12 @@ const Header = ({token, setUserLogin, setUserPW, setToken}) => {
 
   return (
     token ? 
-    (<>
-      <Link to='/searchpage'>Поиск</Link>
-      <Link to='/favorites'>Избранное</Link>
-      <Button variant='outline-primary' onClick={handelClick}>Выйти</Button>
-    </>
+    (<header className='header'>
+      <img className='header__logo' src={logo} alt='logo'/>
+      <Link className='header__item' to='/searchpage'>Поиск</Link>
+      <Link className='header__item' to='/favorites'>Избранное</Link>
+      <Button className='header__item' variant='outline-primary' onClick={handelClick}>Выйти</Button>
+    </header>
     ) : (null)
   )
 };

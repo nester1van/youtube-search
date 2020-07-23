@@ -14,8 +14,8 @@ const SearchPage = ({ isShownAdd, setShowModalAdd, query, setQuery, maxResults, 
   const { items } = data;
 
   return (
-    <>
-      <h1>Поиск видео</h1>
+    <div className='search-page'>
+      <h1 className='search-page__title'>Поиск видео</h1>
       <SearchForm/>
       
       {(items && items.length !== 0) ? 
@@ -35,7 +35,7 @@ const SearchPage = ({ isShownAdd, setShowModalAdd, query, setQuery, maxResults, 
       {/* 9829 black heart */}
 
       <ModalAddToFavorites/>
-    </>
+    </div>
   )
 };
 

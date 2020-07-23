@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { connect } from 'react-redux';
-import { Form } from 'react-bootstrap'; 
+import { Form, InputGroup } from 'react-bootstrap'; 
 import BtnLogin from './BtnLogin';
-
+import logo from '../../img/sibdev-logo.png';
+import './authorizationPage.css';
 import { setUserLogin, setUserPW } from '../../redux/user/actions';
 
 const AuthorizationPage = ({ login, password, setUserLogin, setUserPW }) => {
@@ -17,18 +18,52 @@ const AuthorizationPage = ({ login, password, setUserLogin, setUserPW }) => {
     setUserPW(value);
   }
   
+  const pwInput = useRef(null);
+
+  const handleVisibilityPW = (e) => {
+    const type = pwInput.current.type;
+    if (type === 'password') {
+      pwInput.current.type = 'text';
+      e.target.innerHTML = 'hide'
+    } else {
+      pwInput.current.type = 'password';
+      e.target.innerHTML = 'show';
+    }
+  }
+
   return (
-    <Form>
-      <Form.Control 
-        type='text' 
-        value={login} 
-        onChange={handleChangeLogin}/>
-      <Form.Control 
-        type='password' 
-        value={password} 
-        onChange={handleChangePW}/>
-      <BtnLogin/>
-    </Form>
+    <div className='authorization'>
+      <img className='logo' src={logo} alt='logo'/>
+      <h1 className='authorization__title'>Вход</h1>
+      <Form className='authorizatin__form'>
+        <Form.Group className='authorization__login-group'>
+          <Form.Label className='authorization__login-label'>Логин</Form.Label>
+          <Form.Control 
+            className='authorization__login-input' 
+            type='text' 
+            value={login} 
+            onChange={handleChangeLogin}/>  
+          </Form.Group>
+        <Form.Group className='authorization__pw-group'>
+          <Form.Label className='authorization__pw-label'>Пароль</Form.Label>
+          <InputGroup className='authorization__pw-input-group'>
+            <Form.Control 
+              className='authorization__pw-input' 
+              type='password' 
+              value={password} 
+              ref={pwInput}
+              onChange={handleChangePW}/>
+            <InputGroup.Append>
+              <InputGroup.Text 
+                className='authorization__pw-input-vs'
+                onClick={handleVisibilityPW} 
+              >show</InputGroup.Text>
+            </InputGroup.Append>
+          </InputGroup>
+        </Form.Group>
+        <BtnLogin/>
+      </Form>
+    </div>
   )
 };
 

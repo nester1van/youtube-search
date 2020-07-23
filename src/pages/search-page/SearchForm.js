@@ -3,6 +3,7 @@ import { Form, InputGroup } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import getVideos, { setQuery } from '../../redux/search/actions';
 import { setShowModalAdd, setHeartFavorites } from '../../redux/appearance/actions';
+import './searchForm.css';
 
 const SearchForm = ({ getVideos, setQuery, data, 
   maxResults, sortBy, setShowModalAdd, query, heart, setHeartFavorites}) => {
@@ -42,25 +43,33 @@ const SearchForm = ({ getVideos, setQuery, data,
   };
 
   return (
-    <Form inline onSubmit={handleSubmit}>
-      <InputGroup>
+    <Form 
+      className='search-form'
+      inline 
+      onSubmit={handleSubmit}>
+        <Form.Group className='search-form__group'>
+          <InputGroup>
+          <Form.Control 
+            className='search-form__query'
+            type='text' 
+            name='q' 
+            placeholder='Что хотите посмотреть?'
+            aria-describedby='favorites'
+            onChange={handleChange}/>
+          <InputGroup.Append>
+            <InputGroup.Text 
+              className='search-form__favorites'
+              id='favorites'
+              onClick={handleShow}  
+            >{controlHeartFavorites()}</InputGroup.Text>
+          </InputGroup.Append>
+        </InputGroup>
         <Form.Control 
-          type='text' 
-          name='q' 
-          placeholder='Что хотите посмотреть?'
-          aria-describedby='favorites'
-          onChange={handleChange}/>
-        <InputGroup.Append>
-          <InputGroup.Text 
-            id='favorites'
-            onClick={handleShow}  
-          >{controlHeartFavorites()}</InputGroup.Text>
-        </InputGroup.Append>
-      </InputGroup>
-      <Form.Control 
-        type='submit' 
-        value='Найти'
-      />
+          className='search-form__btn-submit'
+          type='submit' 
+          value='Найти'
+        />
+      </Form.Group>
     </Form>
   );
 };

@@ -6,7 +6,6 @@ import GoogleLogin from 'react-google-login';
 import { gapiClient } from '../../config';
 import Button from 'react-bootstrap/Button';
 import userValidation from '../../mock-server/userValidation';
-import './authorizationPage.css';
 import { Redirect } from 'react-router-dom';
 
 const BtnLogin = ({ login, password, 
@@ -36,7 +35,7 @@ const BtnLogin = ({ login, password,
   };
 
   return (
-    <>
+    <div className='btn-wrapper'>
       {token ? <Redirect to='/searchpage'/> :
       <GoogleLogin
         clientId={gapiClient.clientId}
@@ -52,7 +51,7 @@ const BtnLogin = ({ login, password,
         onFailure={responseGoogle}
         cookiePolicy={'single_host_origin'}
       />}
-    </>
+    </div>
   );
 };
 

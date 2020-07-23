@@ -1,0 +1,26 @@
+.search-form {
+
+}
+
+.search-form__group {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-form__query {
+  width: 500px !important;
+  border-right: none;
+}
+
+.search-form__favorites {
+  background-color: #fff;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search-form__btn-submit {
+  color: #fff;
+  background-color: #007bff;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
