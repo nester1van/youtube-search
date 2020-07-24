@@ -9,10 +9,14 @@ import { setQueryF, setQueryNameF,
   deleteQueryInF } from '../../redux/favorites/actions';
 import './favoriteItem.css';
 
+import { useHistory } from "react-router-dom";
+
 const FavoriteItem = ({ queryF, nameF, maxResultsF, sortByF,
   setQuery, setQueryName, setMaxResults, setSortBy, getVideos,
   setShowModalEdit, setQueryF, setQueryNameF, setMaxResultsF, setSortByF, 
   setSelectedIdF, id, deleteQueryInF, setHeartFavorites }) => {
+
+  let history = useHistory();
 
   const handleExecute = () => {
     setQuery(queryF);
@@ -21,6 +25,7 @@ const FavoriteItem = ({ queryF, nameF, maxResultsF, sortByF,
     setSortBy(sortByF);
     getVideos(queryF, maxResultsF, sortByF);
     setHeartFavorites('marked');
+    history.push('/searchpage');
   };
 
   const handleEdit = () => {
