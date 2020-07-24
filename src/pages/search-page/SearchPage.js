@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
 import { setQuery, setMaxResults, setQueryName, setSortBy } from '../../redux/search/actions';
@@ -9,9 +9,19 @@ import ModalAddToFavorites from './ModalAddToFavorites';
 import { setShowModalAdd } from '../../redux/appearance/actions';
 import './searchPage.css';
 
-const SearchPage = ({ isShownAdd, setShowModalAdd, query, setQuery, maxResults, setMaxResults, name, setQueryName, sortBy, setSortBy, data, layout }) => {
+import {addArrDataFToF} from '../../redux/favorites/actions';
+
+const SearchPage = ({ login, isShownAdd, setShowModalAdd, query, setQuery, maxResults, setMaxResults, name, setQueryName, sortBy, setSortBy, data, layout, addArrDataFToF }) => {
 
   const { items } = data;
+
+  useEffect(() => {
+    let arrDataF = localStorage.getItem(login);
+    if (arrDataF) {
+      arrDataF = JSON.parse(arrDataF);
+      addArrDataFToF(arrDataF);
+    }
+  }, []);
 
   return (
     <div className='search-page'>
@@ -42,6 +52,7 @@ const SearchPage = ({ isShownAdd, setShowModalAdd, query, setQuery, maxResults, 
 };
 
 const mapStateToProps = (state) => ({
+  login: state.user.login,
   query: state.search.query,
   maxResults: state.search.maxResults,
   name: state.search.name,
@@ -51,5 +62,5 @@ const mapStateToProps = (state) => ({
   isShownAdd: state.appearance.isShownAdd
 }); 
 
-export default connect(mapStateToProps, { setShowModalAdd, setQuery, setMaxResults, setQueryName, setSortBy })(SearchPage);
+export default connect(mapStateToProps, { setShowModalAdd, setQuery, setMaxResults, setQueryName, setSortBy, addArrDataFToF })(SearchPage);
 

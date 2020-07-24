@@ -1,6 +1,7 @@
 import { SET_QUERY_F, SET_MAX_RESULTS_F, 
   SET_QUERY_NAME_F, SET_SORT_BY_F, SET_SELECTED_ID_F,
-  ADD_QUERY_TO_F, EDIT_QUERY_IN_F, DELETE_QUERY_IN_F } from './actions';
+  ADD_QUERY_TO_F, EDIT_QUERY_IN_F, DELETE_QUERY_IN_F,
+  ADD_ARRDATAF_TO_F } from './actions';
 
 const initialFavorites = {
   queryF: '',
@@ -12,7 +13,7 @@ const initialFavorites = {
 };
 
 const favorites = (state = initialFavorites, action) => {
-  const { type, queryF, maxResultsF, nameF, sortByF, id, data, selectedId } = action;
+  const { type, queryF, maxResultsF, nameF, sortByF, id, data, arrDataF, selectedId } = action;
   let dataF, index;
   switch(type) {
     case SET_QUERY_F: 
@@ -47,6 +48,9 @@ const favorites = (state = initialFavorites, action) => {
         dataF.splice(index, 1);
         return {...state, dataF};
       }
+    case ADD_ARRDATAF_TO_F:
+      dataF = [...arrDataF];
+      return {...state, dataF};
     default:
       return state;
   }

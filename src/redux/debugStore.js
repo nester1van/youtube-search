@@ -4,7 +4,8 @@
 // import { setLayoutVideos } from './appearance/actions';
 // import { setQueryF, setMaxResultsF, 
 //   setQueryNameF, setSortByF, setSelectedIdF,
-//   addQueryToF, editQueryInF, deleteQueryInF } from './favorites/actions';
+//   addQueryToF, editQueryInF, deleteQueryInF, 
+//   addArrDataFToF } from './favorites/actions';
 
 const debugStore = (store, isDebugging) => {
   if(isDebugging) {
@@ -49,6 +50,9 @@ const debugStore = (store, isDebugging) => {
     // incorrect index
 
     // store.dispatch(deleteQueryInF(11));
+
+    //let arrdataF = [{"id":1595616641633.7625,"data":{"queryF":"a","maxResultsF":12,"nameF":"a","sortByF":"viewCount"}}];
+    //store.dispatch(addArrDataFToF(arrdataF));
   }
 }
 

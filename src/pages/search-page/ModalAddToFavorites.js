@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { setShowModalAdd, setHeartFavorites } from '../../redux/appearance/actions';
@@ -8,9 +8,12 @@ import { setQueryF, setMaxResultsF,
 import './modalAddToFavorites.css';
 
 const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
+    login,
     query, name, sortBy, maxResults,
     queryF, setQueryF, maxResultsF, setMaxResultsF, 
-    nameF, setQueryNameF, sortByF, setSortByF, addQueryToF, setHeartFavorites }) => {
+    nameF, setQueryNameF, sortByF, setSortByF, addQueryToF, dataF, setHeartFavorites }) => {
+
+  const isFirstRun = useRef(true);
 
   useEffect(() => {
     setQueryF(query);
@@ -46,11 +49,20 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
         maxResultsF,
         nameF,
         sortByF});
-        e.preventDefault();
-        setShowModalAdd(false);
-        setHeartFavorites('marked');    
+      setShowModalAdd(false);
+      setHeartFavorites('marked');      
+      e.preventDefault();   
     }
   }
+
+  useEffect(() => {
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
+    let dataFJSON = JSON.stringify(dataF);
+    localStorage.setItem(login, dataFJSON);
+  }, [dataF]);
 
   return (
     <Modal 
@@ -118,13 +130,15 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
 };
 
 const mapStateToProps = (state) => {
-  const { search: { query, name, maxResults, sortBy },
+  const { user: { login },
+    search: { query, name, maxResults, sortBy },
     appearance: { isShownAdd },
-    favorites: { queryF, nameF, maxResultsF, sortByF }
+    favorites: { queryF, nameF, maxResultsF, sortByF, dataF }
   } = state;
   return ({
+    login,
     isShownAdd, query, name, maxResults, sortBy,
-    queryF, nameF, maxResultsF, sortByF
+    queryF, nameF, maxResultsF, sortByF, dataF
   })
 };
 
