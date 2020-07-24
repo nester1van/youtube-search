@@ -16,12 +16,17 @@ const SearchPage = ({ login, isShownAdd, setShowModalAdd, query, setQuery, maxRe
   const { items } = data;
 
   useEffect(() => {
+    console.log()
     let arrDataF = localStorage.getItem(login);
     if (arrDataF) {
       arrDataF = JSON.parse(arrDataF);
       addArrDataFToF(arrDataF);
+    } else {
+      let dataFJSON = JSON.stringify([]);
+      localStorage.setItem(login, dataFJSON);
+      addArrDataFToF([]);
     }
-  }, []);
+  }, [login]);
 
   return (
     <div className='search-page'>
