@@ -5,6 +5,7 @@ import { setShowModalAdd, setHeartFavorites } from '../../redux/appearance/actio
 import { setQueryName, setSortBy, setMaxResults } from '../../redux/search/actions';
 import { setQueryF, setMaxResultsF, 
   setQueryNameF, setSortByF, addQueryToF } from '../../redux/favorites/actions';
+import './modalAddToFavorites.css';
 
 const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
     query, name, sortBy, maxResults,
@@ -65,7 +66,7 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
               value={queryF}/>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Название</Form.Label>
+            <Form.Label>* Название</Form.Label>
             <Form.Control 
               required
               type='text'
@@ -94,13 +95,14 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
               value={maxResultsF}
               onChange={handleChangeMaxResults}/>
             <Form.Control 
+              className='modalAdd__input-number'
               type='number' 
               min='0' max='50'
               value={maxResultsF}
               onChange={handleChangeMaxResults}/>
           </Form.Group>
-          <Button onClick={handleHide}>Не сохранять</Button>
-          <Button type='submit' onClick={handleAddF}>Сохранить</Button>
+          <Button className='modalAdd__btn-no-save' onClick={handleHide}>Не сохранять</Button>
+          <Button className='modalAdd__btn-save' type='submit' onClick={handleAddF}>Сохранить</Button>
         </Form>
       </Modal.Body>
     </Modal>
