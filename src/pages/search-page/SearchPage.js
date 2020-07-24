@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Form, Button, Modal } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { setQuery, setMaxResults, setQueryName, setSortBy } from '../../redux/search/actions';
 import SearchForm from './SearchForm';
 import ItemsLayout from './ItemsLayout';
@@ -21,15 +21,17 @@ const SearchPage = ({ isShownAdd, setShowModalAdd, query, setQuery, maxResults, 
       {(items && items.length !== 0) ? 
        <>
           <ItemsLayout/>
-          {items.map(item => {
-            const { id: {videoId},
-              snippet: {channelTitle, title, thumbnails:{high: {url}}} } = item;
-          return <VideoItem
-            key={videoId}
-            url={url}
-            title={title}
-            channelTitle={channelTitle}/> 
-          })}
+          <div className='search-page__flex-container'> 
+            {items.map(item => {
+              const { id: {videoId},
+                snippet: {channelTitle, title, thumbnails:{high: {url}}} } = item;
+            return <VideoItem
+              key={videoId}
+              url={url}
+              title={title}
+              channelTitle={channelTitle}/> 
+            })}
+          </div>
        </>
        : null}
       {/* 9829 black heart */}

@@ -1,5 +1,14 @@
+.header__container {
+  margin: 0;
+  padding: 0;
+}
+
 .header__row {
   align-items: center;
+}
+
+.header__col {
+
 }
 
 .header__logo {

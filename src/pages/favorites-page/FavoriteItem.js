@@ -7,6 +7,7 @@ import { setShowModalEdit, setHeartFavorites } from '../../redux/appearance/acti
 import { setQueryF, setQueryNameF, 
   setMaxResultsF, setSortByF, setSelectedIdF,
   deleteQueryInF } from '../../redux/favorites/actions';
+import './favoriteItem.css';
 
 const FavoriteItem = ({ queryF, nameF, maxResultsF, sortByF,
   setQuery, setQueryName, setMaxResults, setSortBy, getVideos,
@@ -36,11 +37,17 @@ const FavoriteItem = ({ queryF, nameF, maxResultsF, sortByF,
   }
 
   return (
-    <div>
-      {nameF}
-      <Button onClick={handleExecute}>Выполнить</Button>
-      <Button onClick={handleEdit}>Изменить</Button>
-      <Button onClick={handleDelete}>Удалить</Button>
+    <div className='favoriteItem'>
+      <p className='favoriteItem__name'>{nameF}</p>
+      <Button 
+        className='favoriteItem__btn-do' 
+        onClick={handleExecute}>Выполнить</Button>
+      <Button 
+        className='favoriteItem__btn-change' 
+        onClick={handleEdit}>Изменить</Button>
+      <Button 
+        className='favoriteItem__btn-delete' 
+        onClick={handleDelete}>Удалить</Button>
     </div>
   )
 };

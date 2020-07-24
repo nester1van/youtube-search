@@ -1,0 +1,51 @@
+.favoriteItem {
+  background-color: #fff;
+  margin-bottom: 5px;
+}
+
+.favoriteItem__name {
+  padding-left: 20px;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: bold;
+  display: inline-block;
+  width: 70%;
+}
+
+.favoriteItem__btn-do,
+.favoriteItem__btn-change,
+.favoriteItem__btn-delete {
+  margin: 10px;
+  background-color: #fff;
+  border: none;
+}
+
+.favoriteItem__btn-do:hover,
+.favoriteItem__btn-change:hover,
+.favoriteItem__btn-delete:hover {
+  background-color: #fff;
+  border: none;
+}
+
+.favoriteItem__btn-do:active,
+.favoriteItem__btn-change:active,
+.favoriteItem__btn-delete:active {
+  background-color: #fff;
+  border: none;
+  outline: none;
+}
+
+.favoriteItem__btn-do, 
+.favoriteItem__btn-do:hover {
+  color: #50a14f;
+}
+
+.favoriteItem__btn-change,
+.favoriteItem__btn-change:hover {
+  color: #1390E5;
+}
+
+.favoriteItem__btn-delete,
+.favoriteItem__btn-delete:hover {
+  color: #FF0000;
+}
