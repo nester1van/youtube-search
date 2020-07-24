@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { setShowModalAdd, setShowModalEdit } from '../../redux/appearance/actions';
 import { setQueryF, setMaxResultsF, 
   setQueryNameF, setSortByF, editQueryInF } from '../../redux/favorites/actions';
+import './modalEditFavorite.css';
 
 const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
     queryF, setQueryF, maxResultsF, setMaxResultsF, 
@@ -52,7 +53,10 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
   
 
   return (
-    <Modal show={isShownEdit} onHide={handleHide}>
+    <Modal 
+      className='modalEdit'
+      show={isShownEdit} 
+      onHide={handleHide}>
       <Modal.Header>
         <Modal.Title>Сохранить запрос</Modal.Title>
       </Modal.Header>
@@ -65,7 +69,7 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
               onChange={handleChangeQuery}/>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Название</Form.Label>
+            <Form.Label>* Название</Form.Label>
             <Form.Control 
               required
               type='text'
@@ -94,13 +98,19 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
               value={maxResultsF}
               onChange={handleChangeMaxResults}/>
             <Form.Control 
+              className='modalEdit__input-number'
               type='number' 
               min='0' max='50'
               value={maxResultsF}
               onChange={handleChangeMaxResults}/>
           </Form.Group>
-          <Button onClick={handleHide}>Не изменять</Button>
-          <Button type='submit' onClick={handleEditF}>Изменить</Button>
+          <Button
+            className='modalEdit__btn-no-change' 
+            onClick={handleHide}>Не изменять</Button>
+          <Button 
+            className='modalEdit__btn-change'
+            type='submit' 
+            onClick={handleEditF}>Изменить</Button>
         </Form>
       </Modal.Body>
     </Modal>

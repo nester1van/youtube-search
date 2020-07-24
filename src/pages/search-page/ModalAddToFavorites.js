@@ -53,7 +53,10 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
   }
 
   return (
-    <Modal show={isShownAdd} onHide={handleHide}>
+    <Modal 
+      className='modalAdd' 
+      show={isShownAdd} 
+      onHide={handleHide}>
       <Modal.Header>
         <Modal.Title>Сохранить запрос</Modal.Title>
       </Modal.Header>
@@ -101,8 +104,13 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
               value={maxResultsF}
               onChange={handleChangeMaxResults}/>
           </Form.Group>
-          <Button className='modalAdd__btn-no-save' onClick={handleHide}>Не сохранять</Button>
-          <Button className='modalAdd__btn-save' type='submit' onClick={handleAddF}>Сохранить</Button>
+          <Button 
+            className='modalAdd__btn-no-save' 
+            onClick={handleHide}>Не сохранять</Button>
+          <Button 
+            className='modalAdd__btn-save' 
+            type='submit' 
+            onClick={handleAddF}>Сохранить</Button>
         </Form>
       </Modal.Body>
     </Modal>
