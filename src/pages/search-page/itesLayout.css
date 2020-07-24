@@ -1,0 +1,38 @@
+.layout {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.layout__total-results {
+  color: rgba(23, 23, 25, 0.3);
+  margin-left: 10px;
+}
+
+.layout__list {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url(../../img/list_active.png);
+  opacity: 0.3;
+  margin: 5px;
+  vertical-align: middle;
+}
+
+.layout__list_active {
+  opacity: 1;
+}
+
+.layout__gallery {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url(../../img/grid_active.png);
+  opacity: 0.3;
+  margin: 5px;
+  vertical-align: middle;
+}
+
+.layout__gallery_active {
+  opacity: 1;
+}
