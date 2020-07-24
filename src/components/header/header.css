@@ -19,7 +19,8 @@
   font-size: 18px;
   line-height: 28px;
   font-weight: 500;
-  padding: 20px;
+  padding: 20px 0;
+  margin: 0 20px;
   color: #1390E5;
   border: none;
 }
@@ -28,7 +29,7 @@
 .header__item-favorites:hover,
 .header__item-exit:hover {
   text-decoration: none;
-  border-bottom: 2px solid #1390E5;
+  /* border-bottom: 2px solid #1390E5; */
   background-color: inherit;
   color: #1390E5;
 }
@@ -36,4 +37,9 @@
 
 .header__item-exit:hover {
   border-radius: 0;
+}
+
+.header__item-search_active,
+.header__item-favorites_active {
+  border-bottom: 2px solid #1390E5;
 }
