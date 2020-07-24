@@ -1,7 +1,30 @@
+.header__row {
+  align-items: center;
+}
+
 .header__logo {
   transform: scale(0.6);
 }
 
-.header__item {
+.header__item-search, .header__item-favorites, .header__item-exit {
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 500;
+  padding: 20px;
+  color: #1390E5;
+  border: none;
+}
 
+.header__item-search:hover,
+.header__item-favorites:hover,
+.header__item-exit:hover {
+  text-decoration: none;
+  border-bottom: 2px solid #1390E5;
+  background-color: inherit;
+  color: #1390E5;
+}
+
+
+.header__item-exit:hover {
+  border-radius: 0;
 }
