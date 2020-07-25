@@ -1,4 +1,5 @@
 import { SET_QUERY, SET_MAX_RESULTS, SET_QUERY_NAME, SET_SORT_BY ,
+  SET_DATA,
   GET_VIDEOS_REQ, GET_VIDEOS_RES, GET_VIDEOS_ERR } from './actions';
 
 const initialSearch = {
@@ -23,6 +24,8 @@ const search = (state = initialSearch, action) => {
       return {...state, name};
     case SET_SORT_BY:
       return {...state, sortBy};
+    case SET_DATA: 
+      return {...state, data};
     case GET_VIDEOS_REQ:
       return {...state, isFetching};
     case GET_VIDEOS_RES:

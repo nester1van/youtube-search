@@ -13,7 +13,7 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
     queryF, setQueryF, maxResultsF, setMaxResultsF, 
     nameF, setQueryNameF, sortByF, setSortByF, addQueryToF, dataF, setHeartFavorites }) => {
 
-  const isFirstRun = useRef(true);
+  
 
   useEffect(() => {
     setQueryF(query);
@@ -55,14 +55,7 @@ const ModalAddToFavorites = ({ isShownAdd, setShowModalAdd,
     }
   }
 
-  useEffect(() => {
-    if (isFirstRun.current) {
-      isFirstRun.current = false;
-      return;
-    }
-    let dataFJSON = JSON.stringify(dataF);
-    localStorage.setItem(login, dataFJSON);
-  }, [dataF]);
+  
 
   return (
     <Modal 

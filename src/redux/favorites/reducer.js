@@ -1,7 +1,7 @@
 import { SET_QUERY_F, SET_MAX_RESULTS_F, 
   SET_QUERY_NAME_F, SET_SORT_BY_F, SET_SELECTED_ID_F,
   ADD_QUERY_TO_F, EDIT_QUERY_IN_F, DELETE_QUERY_IN_F,
-  ADD_ARRDATAF_TO_F } from './actions';
+  SET_ARRDATAF_IN_F } from './actions';
 
 const initialFavorites = {
   queryF: '',
@@ -48,7 +48,7 @@ const favorites = (state = initialFavorites, action) => {
         dataF.splice(index, 1);
         return {...state, dataF};
       }
-    case ADD_ARRDATAF_TO_F:
+    case SET_ARRDATAF_IN_F:
       dataF = [...arrDataF];
       return {...state, dataF};
     default:

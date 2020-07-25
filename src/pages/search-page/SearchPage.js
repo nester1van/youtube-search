@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import { connect } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
 import { setQuery, setMaxResults, setQueryName, setSortBy } from '../../redux/search/actions';
@@ -9,24 +9,35 @@ import ModalAddToFavorites from './ModalAddToFavorites';
 import { setShowModalAdd } from '../../redux/appearance/actions';
 import './searchPage.css';
 
-import {addArrDataFToF} from '../../redux/favorites/actions';
+import {setArrDataFInF} from '../../redux/favorites/actions';
 
-const SearchPage = ({ login, isShownAdd, setShowModalAdd, query, setQuery, maxResults, setMaxResults, name, setQueryName, sortBy, setSortBy, data, layout, addArrDataFToF }) => {
-
+const SearchPage = ({ login, isShownAdd, setShowModalAdd, query, setQuery, maxResults, setMaxResults, name, setQueryName, sortBy, setSortBy, data, layout, dataF, setArrDataFInF }) => {
+  const isFirstRun = useRef(true);
   const { items } = data;
 
   useEffect(() => {
-    console.log()
+    console.debug('SearchPage: useEffect [login]');
     let arrDataF = localStorage.getItem(login);
     if (arrDataF) {
       arrDataF = JSON.parse(arrDataF);
-      addArrDataFToF(arrDataF);
+      setArrDataFInF(arrDataF);
     } else {
       let dataFJSON = JSON.stringify([]);
       localStorage.setItem(login, dataFJSON);
-      addArrDataFToF([]);
+      setArrDataFInF([]);
     }
   }, [login]);
+
+  useEffect(() => {  
+      
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
+    console.debug('SearchPage: useEffect [dataF]');
+    let dataFJSON = JSON.stringify(dataF);
+    localStorage.setItem(login, dataFJSON);
+  }, [dataF]);
 
   return (
     <div className='search-page'>
@@ -63,9 +74,10 @@ const mapStateToProps = (state) => ({
   name: state.search.name,
   sortBy: state.search.sortBy,
   data: state.search.data,
+  dataF: state.favorites.dataF,
   layout: state.appearance.layout,
   isShownAdd: state.appearance.isShownAdd
 }); 
 
-export default connect(mapStateToProps, { setShowModalAdd, setQuery, setMaxResults, setQueryName, setSortBy, addArrDataFToF })(SearchPage);
+export default connect(mapStateToProps, { setShowModalAdd, setQuery, setMaxResults, setQueryName, setSortBy, setArrDataFInF })(SearchPage);
 

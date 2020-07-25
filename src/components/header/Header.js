@@ -4,14 +4,21 @@ import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import {setUserLogin, setUserPW} from '../../redux/user/actions';
 import {setToken} from '../../redux/token/actions';
+import {setQuery, setMaxResults, setQueryName, setSortBy, setData} from '../../redux/search/actions';
 import logo from '../../img/sibdev-logo.png';
 import './header.css';
 
-const Header = ({token, setUserLogin, setUserPW, setToken}) => {
+const Header = ({token, setUserLogin, setUserPW, setToken,
+                setQuery, setMaxResults, setQueryName, setSortBy, setData}) => {
   const handelClick = () => {
     setUserLogin('');
     setUserPW('');
     setToken('', 0);
+    setQuery('');
+    setMaxResults(12);
+    setQueryName('');
+    setSortBy('viewCount');
+    setData({});
     localStorage.removeItem('token');
     localStorage.removeItem('userLogin');
   };
@@ -42,4 +49,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, 
-  {setUserLogin, setUserPW, setToken})(Header);
+  {setUserLogin, setUserPW, setToken, 
+    setQuery, setMaxResults, setQueryName, setSortBy, setData})(Header);

@@ -1,11 +1,11 @@
 // import { setUserLogin, setUserPW } from './user/actions';
 // import { setToken } from './token/actions';
-// import getVideos, { setQuery, setMaxResults, setQueryName } from './search/actions';
+// import getVideos, { setQuery, setMaxResults, setQueryName, setData } from './search/actions';
 // import { setLayoutVideos } from './appearance/actions';
 // import { setQueryF, setMaxResultsF, 
 //   setQueryNameF, setSortByF, setSelectedIdF,
 //   addQueryToF, editQueryInF, deleteQueryInF, 
-//   addArrDataFToF } from './favorites/actions';
+//   setArrDataFInF } from './favorites/actions';
 
 const debugStore = (store, isDebugging) => {
   if(isDebugging) {
@@ -51,8 +51,11 @@ const debugStore = (store, isDebugging) => {
 
     // store.dispatch(deleteQueryInF(11));
 
-    //let arrdataF = [{"id":1595616641633.7625,"data":{"queryF":"a","maxResultsF":12,"nameF":"a","sortByF":"viewCount"}}];
-    //store.dispatch(addArrDataFToF(arrdataF));
+    // let arrdataF = [{"id":1595616641633.7625,"data":{"queryF":"a","maxResultsF":12,"nameF":"a","sortByF":"viewCount"}}];
+    // store.dispatch(setArrDataFInF(arrdataF));
+
+    //let data = {items:[]};
+    //store.dispatch(setData(data));
   }
 }
 

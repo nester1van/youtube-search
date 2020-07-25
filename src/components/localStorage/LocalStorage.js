@@ -6,6 +6,7 @@ import { setUserLogin } from '../../redux/user/actions';
 const LocalStorage = ({ children, setToken, setUserLogin }) => {
   
   useEffect(() => {
+    console.debug('LocalStorage: useEffect []');
     const now = new Date().getTime();
     let token = localStorage.getItem('token');
     if (token) {

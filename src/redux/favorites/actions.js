@@ -11,7 +11,7 @@ export const ADD_QUERY_TO_F = 'ADD_QUERY_TO_F';
 export const EDIT_QUERY_IN_F = 'EDIT_QUERY_IN_F'; 
 export const DELETE_QUERY_IN_F ='DELETE_QUERY_IN_F';
 
-export const ADD_ARRDATAF_TO_F = 'ADD_ARRDATAF_TO_F';
+export const SET_ARRDATAF_IN_F = 'SET_ARRDATAF_IN_F';
 
 // action creators
 export const setQueryF = (queryF) => ({
@@ -58,8 +58,7 @@ export const deleteQueryInF = (id) => ({
   id
 });
 
-//ADD_DATAF_TO_F
-export const addArrDataFToF = (arrDataF) => ({
-  type: ADD_ARRDATAF_TO_F,
+export const setArrDataFInF = (arrDataF) => ({
+  type: SET_ARRDATAF_IN_F,
   arrDataF
 });

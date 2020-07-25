@@ -7,6 +7,8 @@ export const SET_MAX_RESULTS = 'SET_MAX_RESULTS';
 export const SET_QUERY_NAME = 'SET_QUERY_NAME';
 export const SET_SORT_BY = 'SET_SORT_BY';
 
+export const SET_DATA = 'SET_DATA';
+
 export const GET_VIDEOS_REQ = 'GET_VIDEOS_REQ';
 export const GET_VIDEOS_RES = 'GET_VIDEOS_RES';
 export const GET_VIDEOS_ERR = 'GET_VIDEOS_ERR';
@@ -29,7 +31,13 @@ export const setQueryName = (name) => ({
 export const setSortBy = (sortBy) => ({
   type: SET_SORT_BY,
   sortBy
-})
+});
+
+// SET_DATA
+export const setData = (data) => ({
+  type: SET_DATA,
+  data
+});
 
 const getVideosReq = () => ({
   type: GET_VIDEOS_REQ,
