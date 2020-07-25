@@ -1,14 +1,15 @@
 import React from 'react';
 import FavoriteItems from './FavoriteItems';
 import ModalEditFavorite from './ModalEditFavorite';
+import './favoritesPage.css';
 
 const FavoritesPage = () => {
   return (
-    <>
-      <h1>Избранное</h1>
+    <div className='favorites-page'>
+      <h1 className='favorites-page__title'>Избранное</h1>
       <FavoriteItems/>
       <ModalEditFavorite/>
-    </>
+    </div>
   )
 };
 

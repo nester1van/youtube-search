@@ -1,6 +1,11 @@
 .favoriteItem {
   background-color: #fff;
   margin-bottom: 5px;
+  transition: background-color 0.3s linear;
+}
+
+.favoriteItem:hover {
+  background-color: #F1F1F1;
 }
 
 .favoriteItem__name {
@@ -9,7 +14,7 @@
   line-height: 28px;
   font-weight: bold;
   display: inline-block;
-  width: 70%;
+  width: calc(100% - 350px);
 }
 
 .favoriteItem__btn-do,
