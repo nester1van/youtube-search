@@ -1,14 +1,7 @@
-.header__container {
-  margin: 0;
-  padding: 0;
-}
-
-.header__row {
+.header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-
-.header__col {
-
 }
 
 .header__logo {
@@ -29,17 +22,20 @@
 .header__item-favorites:hover,
 .header__item-exit:hover {
   text-decoration: none;
-  /* border-bottom: 2px solid #1390E5; */
   background-color: inherit;
   color: #1390E5;
-}
-
-
-.header__item-exit:hover {
-  border-radius: 0;
 }
 
 .header__item-search_active,
 .header__item-favorites_active {
   border-bottom: 2px solid #1390E5;
+}
+
+.header__item-exit {
+  align-self: flex-end;
+  margin-right: 0;
+}
+
+.header__item-exit:hover {
+  border-radius: 0;
 }
