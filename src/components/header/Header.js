@@ -2,13 +2,13 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import {setUserLogin, setUserPW} from '../../redux/user/actions';
+import {setUserLogin, setUserPW, setIsDataFFromLS} from '../../redux/user/actions';
 import {setToken} from '../../redux/token/actions';
 import {setQuery, setMaxResults, setQueryName, setSortBy, setData} from '../../redux/search/actions';
 import logo from '../../img/sibdev-logo.png';
 import './header.css';
 
-const Header = ({token, setUserLogin, setUserPW, setToken,
+const Header = ({token, setUserLogin, setUserPW, setToken, setIsDataFFromLS,
                 setQuery, setMaxResults, setQueryName, setSortBy, setData}) => {
   const handelClick = () => {
     setUserLogin('');
@@ -21,6 +21,7 @@ const Header = ({token, setUserLogin, setUserPW, setToken,
     setData({});
     localStorage.removeItem('token');
     localStorage.removeItem('userLogin');
+    setIsDataFFromLS(false);
   };
 
   let pathName = useLocation().pathname;
@@ -49,5 +50,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, 
-  {setUserLogin, setUserPW, setToken, 
+  {setUserLogin, setUserPW, setToken, setIsDataFFromLS,
     setQuery, setMaxResults, setQueryName, setSortBy, setData})(Header);

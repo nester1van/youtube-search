@@ -1,4 +1,4 @@
-// import { setUserLogin, setUserPW } from './user/actions';
+// import { setUserLogin, setUserPW, setIsDataFFromLS } from './user/actions';
 // import { setToken } from './token/actions';
 // import getVideos, { setQuery, setMaxResults, setQueryName, setData } from './search/actions';
 // import { setLayoutVideos } from './appearance/actions';
@@ -12,6 +12,7 @@ const debugStore = (store, isDebugging) => {
     store.subscribe(() => console.log(store.getState()));
     // store.dispatch(setUserLogin('login'));
     // store.dispatch(setUserPW('pw'));
+    // store.dispatch(setIsDataFFromLS(true));
     // store.dispatch(setToken('token', 10));
     // store.dispatch(setQuery('react'));
     // store.dispatch(setMaxResults(3));
