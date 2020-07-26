@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import YouTube from 'react-youtube';
 import './videoItem.css';
 
-const VideoItem = ( { url, title, channelTitle, layout }) => {
+const VideoItem = ( {id, url, title, channelTitle, layout }) => {
   
   const changeLayout = () => {
     if (layout === 'list') {
@@ -12,9 +13,18 @@ const VideoItem = ( { url, title, channelTitle, layout }) => {
     }
   };
 
+  const opts = {
+    height: '390',
+    width: '640',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0,
+    },
+  };
+
   return (
   <div className={'videoItem_' + changeLayout()}>
-    <img className={'videoItem__image_' + changeLayout()} src={url}></img>
+    <YouTube videoId={id} className={'videoItem__image_' + changeLayout()} opts={opts}/>
     <div className={'videoItem__text_' + changeLayout()}>
       <h3 className='videoItem__title'>{title}</h3>
       <p className='videoItem__channel-name'>{channelTitle}</p>

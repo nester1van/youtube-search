@@ -58,6 +58,7 @@ const SearchPage = ({ login, isShownAdd, setShowModalAdd, query, setQuery, maxRe
                 snippet: {channelTitle, title, thumbnails:{high: {url}}} } = item;
             return <VideoItem
               key={videoId}
+              id = {videoId}
               url={url}
               title={title}
               channelTitle={channelTitle}/> 

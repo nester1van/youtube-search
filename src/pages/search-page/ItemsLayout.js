@@ -15,7 +15,7 @@ const ItemsLayout = ({ query, totalResults, setLayoutVideos, layout }) => {
 
   return (
     <div className='layout'>
-      <p clasName='layout__query'>
+      <p className='layout__query'>
         Видео по запросу "{query}" 
         <span className='layout__total-results'>{totalResults}</span></p>
       <div className='layout__types'>
