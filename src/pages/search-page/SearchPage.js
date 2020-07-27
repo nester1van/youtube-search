@@ -12,8 +12,10 @@ import './searchPage.css';
 import {setArrDataFInF} from '../../redux/favorites/actions';
 import {setIsDataFFromLS} from '../../redux/user/actions';
 
-const SearchPage = ({ login, isShownAdd, setShowModalAdd, query, setQuery, maxResults, setMaxResults, name, setQueryName, sortBy, setSortBy, data, layout, dataF, setArrDataFInF, 
-  isDataFFromLS, setIsDataFFromLS }) => {
+const SearchPage = ({ login, isShownAdd, setShowModalAdd, 
+  query, setQuery, maxResults, setMaxResults, name, 
+  setQueryName, sortBy, setSortBy, data, layout, dataF, setArrDataFInF, 
+  isDataFFromLS, setIsDataFFromLS, viewCountArr }) => {
   const isFirstRun = useRef(true);
   const { items } = data;
 
@@ -53,7 +55,7 @@ const SearchPage = ({ login, isShownAdd, setShowModalAdd, query, setQuery, maxRe
        <>
           <ItemsLayout/>
           <div className='search-page__flex-container'> 
-            {items.map(item => {
+            {items.map((item, index) => {
               const { id: {videoId},
                 snippet: {channelTitle, title, thumbnails:{high: {url}}} } = item;
             return <VideoItem
@@ -61,7 +63,8 @@ const SearchPage = ({ login, isShownAdd, setShowModalAdd, query, setQuery, maxRe
               id = {videoId}
               url={url}
               title={title}
-              channelTitle={channelTitle}/> 
+              channelTitle={channelTitle}
+              viewCount={viewCountArr[index]}/> 
             })}
           </div>
        </>
@@ -83,7 +86,8 @@ const mapStateToProps = (state) => ({
   data: state.search.data,
   dataF: state.favorites.dataF,
   layout: state.appearance.layout,
-  isShownAdd: state.appearance.isShownAdd
+  isShownAdd: state.appearance.isShownAdd,
+  viewCountArr: state.viewCountArr.viewCountArr
 }); 
 
 export default connect(mapStateToProps, { setShowModalAdd, setQuery, setMaxResults, setQueryName, setSortBy, setArrDataFInF, setIsDataFFromLS })(SearchPage);

@@ -1,6 +1,7 @@
 .videoItem_list {
   flex: 1 1 100%;
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 20px;
 }
 
@@ -9,19 +10,19 @@
 }
 
 .videoItem_gallery {
-  flex: 1 1 25%;
+  flex: 0 0 25%;
   padding: 10px;
 }
 
-.videoItem__image_list {
+.videoItem__video_list {
   width: 157px;
   height: 88px;
   margin-bottom: 10px;
   margin-right: 20px;
 }
 
-.videoItem__image_gallery {
-  max-width: 100%;
+.videoItem__video_gallery {
+  width: 100%;
   height: auto;
   margin-bottom: 10px;
 }

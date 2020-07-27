@@ -6,6 +6,7 @@
 //   setQueryNameF, setSortByF, setSelectedIdF,
 //   addQueryToF, editQueryInF, deleteQueryInF, 
 //   setArrDataFInF } from './favorites/actions';
+// import getViewCountArr from './viewCountArr/actions';
 
 const debugStore = (store, isDebugging) => {
   if(isDebugging) {
@@ -57,6 +58,8 @@ const debugStore = (store, isDebugging) => {
 
     //let data = {items:[]};
     //store.dispatch(setData(data));
+
+    // store.dispatch(getViewCountArr(['hq3yfQnllfQ', 'IuV2y5te2o4']));
   }
 }
 

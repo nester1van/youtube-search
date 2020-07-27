@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import YouTube from 'react-youtube';
 import './videoItem.css';
 
-const VideoItem = ( {id, url, title, channelTitle, layout }) => {
-  
+const VideoItem = ( {id, url, title, channelTitle, layout, viewCount }) => {
+  console.log(id);
   const changeLayout = () => {
     if (layout === 'list') {
       return 'list';
@@ -24,11 +24,18 @@ const VideoItem = ( {id, url, title, channelTitle, layout }) => {
 
   return (
   <div className={'videoItem_' + changeLayout()}>
-    <YouTube videoId={id} className={'videoItem__image_' + changeLayout()} opts={opts}/>
+    <div className={'videoItem__video_' + changeLayout()}>
+      <YouTube 
+        videoId={id} 
+        opts={opts}/>
+    </div>
+    
     <div className={'videoItem__text_' + changeLayout()}>
       <h3 className='videoItem__title'>{title}</h3>
       <p className='videoItem__channel-name'>{channelTitle}</p>
-      <p className='videoItem__view-count'>75 000 тыс. просмотров</p>
+      <p className='videoItem__view-count'>
+        {viewCount ? Math.ceil(viewCount / 1000) + ' тыс просмотров' : 'Video blocked'}
+      </p>
     </div>
   </div>
   )

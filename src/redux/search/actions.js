@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { gapiClient } from '../../config';
+import getViewCountArr from '../viewCountArr/actions';
 
 // action types
 export const SET_QUERY = 'SET_QUERY';
@@ -77,7 +78,12 @@ const getVideos = (query, maxResults, sortBy) => (dispatch) => {
   dispatch(getVideosReq());
   return axios.get(url(query, maxResults, sortBy, key))
     .then(json => {
+      console.log(json.data);
+      let idArr = json.data.items.map(item => item.id.videoId);
+      console.log(idArr);
+      
       dispatch(getVideosRes(json.data))
+      getViewCountArr(idArr)(dispatch);
     })
     .catch(() => dispatch(getVideosErr()))
 }

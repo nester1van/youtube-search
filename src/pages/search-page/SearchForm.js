@@ -23,7 +23,7 @@ const SearchForm = ({ getVideos, setQuery, data,
     const value = e.target.q.value;
     e.preventDefault();
     setQuery(value);
-    getVideos(value, maxResults, sortBy);
+    getVideos(value, 12, sortBy);
     setHeartFavorites('visible');
   };
 
