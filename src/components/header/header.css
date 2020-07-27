@@ -8,7 +8,9 @@
   transform: scale(0.6);
 }
 
-.header__item-search, .header__item-favorites, .header__item-exit {
+.header__item-search,
+.header__item-favorites, 
+.header__item-exit {
   font-size: 18px;
   line-height: 28px;
   font-weight: 500;

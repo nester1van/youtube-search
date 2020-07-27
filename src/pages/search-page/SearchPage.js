@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import { connect } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
+import YouTube from 'react-youtube';
 import { setQuery, setMaxResults, setQueryName, setSortBy } from '../../redux/search/actions';
 import SearchForm from './SearchForm';
 import ItemsLayout from './ItemsLayout';
@@ -35,8 +36,7 @@ const SearchPage = ({ login, isShownAdd, setShowModalAdd,
     }    
   }, [login]);
 
-  useEffect(() => {  
-      
+  useEffect(() => {        
     if (isFirstRun.current) {
       isFirstRun.current = false;
       return;
@@ -46,9 +46,72 @@ const SearchPage = ({ login, isShownAdd, setShowModalAdd,
     localStorage.setItem(login, dataFJSON);
   }, [dataF]);
 
+
+  const opts = {
+    height: '390',
+    width: '640',
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 0,
+    },
+  };
+
   return (
     <div className='search-page'>
       <h1 className='search-page__title'>Поиск видео</h1>
+      
+      <div className='videoItems'>
+        <div className='videoItem__video'>
+          <YouTube 
+            className='videoItem__iframe'
+            videoId='hq3yfQnllfQ' 
+            opts={opts}/>
+        </div>
+        <div className='videoItem__video'>
+          <YouTube 
+            className='videoItem__iframe' 
+            videoId='hq3yfQnllfQ' 
+            opts={opts}/>
+        </div>
+        <div className='videoItem__video'>
+          <YouTube 
+            className='videoItem__iframe' 
+            videoId='hq3yfQnllfQ' 
+            opts={opts}/>
+        </div>
+        <div className='videoItem__video'>
+          <YouTube 
+            className='videoItem__iframe' 
+            videoId='hq3yfQnllfQ' 
+            opts={opts}/>
+        </div>
+        <div className='videoItem__video'>
+          <YouTube 
+            className='videoItem__iframe'
+            videoId='hq3yfQnllfQ' 
+            opts={opts}/>
+        </div>
+        <div className='videoItem__video'>
+          <YouTube 
+            className='videoItem__iframe' 
+            videoId='hq3yfQnllfQ' 
+            opts={opts}/>
+        </div>
+        <div className='videoItem__video'>
+          <YouTube 
+            className='videoItem__iframe' 
+            videoId='hq3yfQnllfQ' 
+            opts={opts}/>
+        </div>
+        <div className='videoItem__video'>
+          <YouTube 
+            className='videoItem__iframe' 
+            videoId='hq3yfQnllfQ' 
+            opts={opts}/>
+        </div>
+      </div>
+      
+
       <SearchForm/>
       
       {(items && items.length !== 0) ? 

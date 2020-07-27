@@ -8,8 +8,8 @@ import {setQuery, setMaxResults, setQueryName, setSortBy, setData} from '../../r
 import logo from '../../img/sibdev-logo.png';
 import './header.css';
 
-const Header = ({token, setUserLogin, setUserPW, setToken, setIsDataFFromLS,
-                setQuery, setMaxResults, setQueryName, setSortBy, setData}) => {
+const Header = ({token, setUserLogin, setUserPW, setToken, setIsDataFFromLS, 
+  setQuery, setMaxResults, setQueryName, setSortBy, setData}) => {
   const handelClick = () => {
     setUserLogin('');
     setUserPW('');
@@ -32,14 +32,19 @@ const Header = ({token, setUserLogin, setUserPW, setToken, setIsDataFFromLS,
       <div className='head__group'>
         <img className='header__logo' src={logo} alt='logo'/>
         <Link 
-          className={'header__item-search' + (pathName === '/searchpage' ? ' header__item-search_active' : '')} 
+          className={'header__item-search' + 
+            (pathName === '/searchpage' ? ' header__item-search_active' : '')} 
           to='/searchpage'>Поиск</Link>
         <Link 
-          className={'header__item-favorites' + (pathName === '/favorites' ? ' header__item-favorites_active' : '')} 
+          className={'header__item-favorites' + 
+            (pathName === '/favorites' ? ' header__item-favorites_active' : '')} 
           to='/favorites'>Избранное</Link>
       </div>
       <div className='head__group'>
-      <Button className='header__item-exit' variant='outline-primary' onClick={handelClick}>Выйти</Button>
+      <Button 
+        className='header__item-exit' 
+        variant='outline-primary' 
+        onClick={handelClick}>Выйти</Button>
       </div>
     </header>) : (null)
   )

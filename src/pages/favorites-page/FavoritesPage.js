@@ -16,6 +16,7 @@ const FavoritesPage = ({login, dataF}) => {
     let dataFJSON = JSON.stringify(dataF);
     localStorage.setItem(login, dataFJSON);
   }, [dataF]);
+  
   return (
     <div className='favorites-page'>
       <h1 className='favorites-page__title'>Избранное</h1>
