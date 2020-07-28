@@ -26,6 +26,7 @@ const VideoItem = ( {id, url, title, channelTitle, layout, viewCount }) => {
   <div className={'videoItem_' + changeLayout()}>
     <div className={'videoItem__video_' + changeLayout()}>
       <YouTube 
+        className={'videoItem__iframe_' + changeLayout()}
         videoId={id} 
         opts={opts}/>
     </div>

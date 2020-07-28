@@ -14,16 +14,13 @@
 .videoItems {
   display: flex;
   flex-wrap: wrap;
-  max-width: 100%;
 }
 
 .videoItem__video {
   flex: 0 0 25%;
-  padding: 10px;
   position: relative;
   width: 100%;
   height: 0;
-  /* padding-top: 56.25%; */
   padding-top: 14%;
 }
 
