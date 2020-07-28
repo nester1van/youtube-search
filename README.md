@@ -4,8 +4,11 @@
 To login on site use:
 
   login: user1
+  
   password: pw1
 
 or
+
   login: user2
+  
   password: pw2
