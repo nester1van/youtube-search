@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import YouTube from 'react-youtube';
 import './videoItem.css';
 
-const VideoItem = ( {id, url, title, channelTitle, layout, viewCount }) => {
+const VideoItem = ( {id, title, channelTitle, layout, viewCount }) => {
   console.log(id);
   const changeLayout = () => {
     if (layout === 'list') {
@@ -24,12 +24,10 @@ const VideoItem = ( {id, url, title, channelTitle, layout, viewCount }) => {
 
   return (
   <div className={'videoItem_' + changeLayout()}>
-    <div className={'videoItem__video_' + changeLayout()}>
       <YouTube 
         className={'videoItem__iframe_' + changeLayout()}
         videoId={id} 
         opts={opts}/>
-    </div>
     
     <div className={'videoItem__text_' + changeLayout()}>
       <h3 className='videoItem__title'>{title}</h3>

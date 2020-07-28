@@ -5,7 +5,7 @@ import debugStore from './debugStore';
 
 const store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
-debugStore(store, true);
+debugStore(store, false);
 
 export default store;
 

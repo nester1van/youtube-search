@@ -1,5 +1,5 @@
-import React, {useEffect, useRef} from 'react';
-import {connect} from 'react-redux';
+import React, { useEffect, useRef } from 'react';
+import { connect } from 'react-redux';
 import FavoriteItems from './FavoriteItems';
 import ModalEditFavorite from './ModalEditFavorite';
 import './favoritesPage.css';

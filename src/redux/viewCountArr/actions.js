@@ -27,9 +27,6 @@ const getViewCountArrErr = () => ({
 
 const { apiKey: key } = gapiClient;
 
-// https://gdata.youtube.com/feeds/api/videos/{$video_ID}?v=2&alt=json
-// https://www.googleapis.com/youtube/v3/videos?part=statistics&id=Q5mHPo2yDG8&key={YOUR_API_KEY}
-
 // URL creator
 const url = (videoId) => {
   return `https://www.googleapis.com/youtube/v3/videos?part=statistics&id=${videoId}&key=${key}`;

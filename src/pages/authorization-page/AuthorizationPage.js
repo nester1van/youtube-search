@@ -24,10 +24,14 @@ const AuthorizationPage = ({ login, password, setUserLogin, setUserPW }) => {
     const type = pwInput.current.type;
     if (type === 'password') {
       pwInput.current.type = 'text';
-      e.target.innerHTML = 'hide'
+      let className = e.target.className;
+      e.target.className = className.replace(
+        'authorization__pw-input-vs_password', 'authorization__pw-input-vs_text'); 
     } else {
       pwInput.current.type = 'password';
-      e.target.innerHTML = 'show';
+      let className = e.target.className;
+      e.target.className = className.replace(
+        'authorization__pw-input-vs_text', 'authorization__pw-input-vs_password');
     }
   }
 
@@ -55,9 +59,9 @@ const AuthorizationPage = ({ login, password, setUserLogin, setUserPW }) => {
               onChange={handleChangePW}/>
             <InputGroup.Append>
               <InputGroup.Text 
-                className='authorization__pw-input-vs'
+                className='authorization__pw-input-vs_password'
                 onClick={handleVisibilityPW} 
-              >show</InputGroup.Text>
+              ></InputGroup.Text>
             </InputGroup.Append>
           </InputGroup>
         </Form.Group>

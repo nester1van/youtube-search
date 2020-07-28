@@ -20,10 +20,12 @@ const ItemsLayout = ({ query, totalResults, setLayoutVideos, layout }) => {
         <span className='layout__total-results'>{totalResults}</span></p>
       <div className='layout__types'>
       <span 
-        className={'layout__list' + (layout === 'list' ? ' layout__list_active' : '')}
+        className={'layout__list' + 
+          (layout === 'list' ? ' layout__list_active' : '')}
         onClick={handleList}></span>
       <span 
-        className={'layout__gallery' + (layout === 'gallery' ? ' layout__gallery_active' : '')} 
+        className={'layout__gallery' + 
+          (layout === 'gallery' ? ' layout__gallery_active' : '')} 
         onClick={handleGallery}></span>
       </div>
     </div>

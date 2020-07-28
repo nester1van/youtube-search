@@ -13,8 +13,11 @@ const initialFavorites = {
 };
 
 const favorites = (state = initialFavorites, action) => {
-  const { type, queryF, maxResultsF, nameF, sortByF, id, data, arrDataF, selectedId } = action;
+  const { type, queryF, maxResultsF, nameF, 
+    sortByF, id, data, arrDataF, selectedId } = action;
+
   let dataF, index;
+
   switch(type) {
     case SET_QUERY_F: 
       return {...state, queryF};
@@ -32,7 +35,6 @@ const favorites = (state = initialFavorites, action) => {
     case EDIT_QUERY_IN_F:
       dataF = [...state.dataF];
       index = dataF.findIndex(query => query.id === id);
-      console.log(index);
       if (index === -1) {
         return state;
       } else {

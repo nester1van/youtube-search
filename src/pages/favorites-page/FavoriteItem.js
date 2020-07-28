@@ -57,10 +57,6 @@ const FavoriteItem = ({ queryF, nameF, maxResultsF, sortByF,
   )
 };
 
-// const mapStateToProps = (state) => ({
-
-// })
-
 export default connect(null, 
   { setQuery, setQueryName, setMaxResults, setSortBy, getVideos, 
     setShowModalEdit, setQueryF, setQueryNameF, setMaxResultsF, setSortByF,

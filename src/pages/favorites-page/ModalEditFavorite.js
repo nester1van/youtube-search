@@ -50,8 +50,6 @@ const ModalAddToFavorites = ({ isShownEdit, setShowModalEdit,
     }
   }
 
-  
-
   return (
     <Modal 
       className='modalEdit'
@@ -129,6 +127,6 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, 
-  { setShowModalAdd, setShowModalEdit, setQueryF, setQueryNameF, 
+  {setShowModalAdd, setShowModalEdit, setQueryF, setQueryNameF, 
     setMaxResultsF, setSortByF, editQueryInF})
   (ModalAddToFavorites);

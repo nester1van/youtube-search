@@ -5,5 +5,3 @@ export const generatorId = () => {
   let id = time + random;
   return id;
 };
-
-// generatorId();

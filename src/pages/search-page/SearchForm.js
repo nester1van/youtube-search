@@ -5,8 +5,8 @@ import getVideos, { setQuery } from '../../redux/search/actions';
 import { setShowModalAdd, setHeartFavorites } from '../../redux/appearance/actions';
 import './searchForm.css';
 
-const SearchForm = ({ getVideos, setQuery, data, 
-  maxResults, sortBy, setShowModalAdd, query, heart, setHeartFavorites}) => {
+const SearchForm = ({ getVideos, setQuery, data, sortBy,
+   setShowModalAdd, query, heart, setHeartFavorites}) => {
 
   const { items } = data;
 
